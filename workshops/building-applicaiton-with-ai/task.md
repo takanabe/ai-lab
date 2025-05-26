@@ -18,7 +18,7 @@ This plan is based on the architecture in `.clinerules/01_architecture.md` and t
    - End: Material UI, Supabase JS, Playwright, Jest, React Testing Library, ESLint, Prettier installed
    - Test: All packages present, `npm run dev`, `npm test`, and `npx playwright test` work
 
-3. **Set Up TypeScript**
+3. ✅ **Set Up TypeScript**
    - Start: JS or default TS config
    - End: TypeScript configured, `tsconfig.json` present, app compiles
    - Test: App builds and runs with TypeScript
