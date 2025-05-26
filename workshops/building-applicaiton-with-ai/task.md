@@ -1,12 +1,14 @@
 # Step-by-Step MVP Build Plan for Recipe Sharing Application
 
+✅ = Completed
+
 This plan is based on the architecture in `.clinerules/01_architecture.md` and the coding policy in `.clinerules/02_coding_policy.md`. Each task is atomic, testable, and focused on a single concern, making it ideal for sequential handoff and testing.
 
 ---
 
 ## 0. Project Initialization
 
-1. **Scaffold Next.js App**
+1. ✅ **Scaffold Next.js App**
    - Start: No project directory
    - End: Clean Next.js app scaffolded, runs with `npm run dev`
    - Test: App loads default page
