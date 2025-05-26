@@ -13,10 +13,10 @@ This plan is based on the architecture in `.clinerules/01_architecture.md` and t
    - End: Clean Next.js app scaffolded, runs with `npm run dev`
    - Test: App loads default page
 
-2. **Install Dependencies**
+2. ✅ **Install Dependencies**
    - Start: Clean Next.js app
    - End: Material UI, Supabase JS, Playwright, Jest, React Testing Library, ESLint, Prettier installed
-   - Test: All packages present, `npm run dev` and `npm test` work
+   - Test: All packages present, `npm run dev`, `npm test`, and `npx playwright test` work
 
 3. **Set Up TypeScript**
    - Start: JS or default TS config
