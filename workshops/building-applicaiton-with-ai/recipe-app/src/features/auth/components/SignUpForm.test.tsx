@@ -3,11 +3,17 @@ import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { SignUpForm } from './SignUpForm';
 
 // Mock supabase client
+const mockUpdate = jest.fn().mockReturnValue({ eq: jest.fn() });
 jest.mock('../../../lib/supabaseClient', () => ({
   supabase: {
     auth: {
       signUp: jest.fn(),
     },
+    from: () => ({
+      update: () => ({
+        eq: mockUpdate,
+      }),
+    }),
   },
 }));
 
@@ -20,37 +26,36 @@ describe('SignUpForm', () => {
 
   it('renders form fields', () => {
     render(<SignUpForm />);
+    expect(screen.getByLabelText(/first name/i)).toBeInTheDocument();
+    expect(screen.getByLabelText(/last name/i)).toBeInTheDocument();
     expect(screen.getByLabelText(/email/i)).toBeInTheDocument();
     expect(screen.getByLabelText(/password/i)).toBeInTheDocument();
     expect(screen.getByRole('button', { name: /sign up/i })).toBeInTheDocument();
   });
 
-  it('shows validation error if fields are empty', async () => {
+  it('shows validation error if fields are empty', () => {
     render(<SignUpForm />);
     fireEvent.click(screen.getByRole('button', { name: /sign up/i }));
-    // Debug: log the DOM to see what is rendered
-    // eslint-disable-next-line no-console
-    // @ts-ignore
-    // eslint-disable-next-line testing-library/no-debugging-utils
-    // screen.debug();
-    expect(
-      screen.getByText((content) => content.includes('Email and password are required'))
-    ).toBeInTheDocument();
+    expect(screen.getByText(/all fields are required/i)).toBeInTheDocument();
     expect(mockSignUp).not.toHaveBeenCalled();
   });
 
-  it('shows validation error if password is too short', async () => {
+  it('shows validation error if password is too short', () => {
     render(<SignUpForm />);
+    fireEvent.change(screen.getByLabelText(/first name/i), { target: { value: 'John' } });
+    fireEvent.change(screen.getByLabelText(/last name/i), { target: { value: 'Doe' } });
     fireEvent.change(screen.getByLabelText(/email/i), { target: { value: 'test@example.com' } });
     fireEvent.change(screen.getByLabelText(/password/i), { target: { value: '123' } });
     fireEvent.click(screen.getByRole('button', { name: /sign up/i }));
-    expect(await screen.findByText(/password must be at least 6 characters/i)).toBeInTheDocument();
+    expect(screen.getByText(/password must be at least 6 characters/i)).toBeInTheDocument();
     expect(mockSignUp).not.toHaveBeenCalled();
   });
 
-  it('calls supabase signUp and shows success message', async () => {
-    mockSignUp.mockResolvedValueOnce({ error: null });
+  it('calls supabase signUp and updates public.users, then shows success message', async () => {
+    mockSignUp.mockResolvedValueOnce({ data: { user: { id: 'user-123' } }, error: null });
     render(<SignUpForm />);
+    fireEvent.change(screen.getByLabelText(/first name/i), { target: { value: 'John' } });
+    fireEvent.change(screen.getByLabelText(/last name/i), { target: { value: 'Doe' } });
     fireEvent.change(screen.getByLabelText(/email/i), { target: { value: 'test@example.com' } });
     fireEvent.change(screen.getByLabelText(/password/i), { target: { value: '123456' } });
     fireEvent.click(screen.getByRole('button', { name: /sign up/i }));
@@ -59,11 +64,14 @@ describe('SignUpForm', () => {
       expect(screen.getByText(/check your email to confirm your account/i)).toBeInTheDocument(),
     );
     expect(mockSignUp).toHaveBeenCalledWith({ email: 'test@example.com', password: '123456' });
+    expect(mockUpdate).toHaveBeenCalledWith({ first_name: 'John', last_name: 'Doe' });
   });
 
   it('shows error message if supabase returns error', async () => {
-    mockSignUp.mockResolvedValueOnce({ error: { message: 'Email already registered' } });
+    mockSignUp.mockResolvedValueOnce({ data: {}, error: { message: 'Email already registered' } });
     render(<SignUpForm />);
+    fireEvent.change(screen.getByLabelText(/first name/i), { target: { value: 'John' } });
+    fireEvent.change(screen.getByLabelText(/last name/i), { target: { value: 'Doe' } });
     fireEvent.change(screen.getByLabelText(/email/i), { target: { value: 'test@example.com' } });
     fireEvent.change(screen.getByLabelText(/password/i), { target: { value: '123456' } });
     fireEvent.click(screen.getByRole('button', { name: /sign up/i }));
