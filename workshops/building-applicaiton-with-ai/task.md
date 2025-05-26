@@ -51,7 +51,7 @@ This plan is based on the architecture in `.clinerules/01_architecture.md` and t
    - End: `SignUpForm` component in `src/features/auth/components/`, calls Supabase sign up
    - Test: Unit test for form validation and Supabase call
 
-8. **Implement Login Form**
+8. ✅ **Implement Login Form**
    - Start: No login UI
    - End: `LoginForm` component in `src/features/auth/components/`, calls Supabase login
    - Test: Unit test for form validation and Supabase call
