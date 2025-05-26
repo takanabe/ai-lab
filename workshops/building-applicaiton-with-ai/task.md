@@ -73,7 +73,16 @@ This plan is based on the architecture in `.clinerules/01_architecture.md` and t
 
 ---
 
-## 3. Recipe CRUD
+## 3. Sync DB users (auth.users and public.users)
+
+35. ✅ **Sync auth.users and public.users**
+    - Start: No sync between auth.users and public.users
+    - End: public.users table and trigger/function for sync created in Supabase
+    - Test: New users in auth.users are automatically added to public.users with correct id
+
+---
+
+## 4. Recipe CRUD
 
 12. **Define Recipe Types**
     - Start: No types
@@ -137,7 +146,7 @@ This plan is based on the architecture in `.clinerules/01_architecture.md` and t
 
 ---
 
-## 4. User Profiles
+## 5. User Profiles
 
 24. **Create User Profile Page**
     - Start: No profile page
@@ -151,7 +160,7 @@ This plan is based on the architecture in `.clinerules/01_architecture.md` and t
 
 ---
 
-## 5. UI & Layout
+## 6. UI & Layout
 
 26. **Add Main Layout**
     - Start: No layout
@@ -170,7 +179,7 @@ This plan is based on the architecture in `.clinerules/01_architecture.md` and t
 
 ---
 
-## 6. Image Upload (Optional MVP)
+## 7. Image Upload (Optional MVP)
 
 29. **Enable Supabase Storage**
     - Start: No storage
@@ -189,7 +198,7 @@ This plan is based on the architecture in `.clinerules/01_architecture.md` and t
 
 ---
 
-## 7. Testing & Polish
+## 8. Testing & Polish
 
 32. **Manual Test All Flows**
     - Start: Features implemented
