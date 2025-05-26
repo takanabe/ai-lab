@@ -66,7 +66,7 @@ This plan is based on the architecture in `.clinerules/01_architecture.md` and t
     - End: User state managed (React Context or Zustand), persists across reloads
     - Test: Auth state persists after reload (unit test)
 
-11. **Protect Routes**
+11. ✅ **Protect Routes**
     - Start: All pages public
     - End: Redirects unauthenticated users from recipe creation/profile pages
     - Test: E2E test for route protection
