@@ -46,27 +46,27 @@ This plan is based on the architecture in `.clinerules/01_architecture.md` and t
 
 ## 2. Authentication
 
-7. **Implement Sign Up Form**
+7. ✅ **Implement Sign Up Form**
    - Start: No sign up UI
    - End: `SignUpForm` component in `src/features/auth/components/`, calls Supabase sign up
    - Test: Unit test for form validation and Supabase call
 
-8. **Implement Login Form**
+8. ✅ **Implement Login Form**
    - Start: No login UI
    - End: `LoginForm` component in `src/features/auth/components/`, calls Supabase login
    - Test: Unit test for form validation and Supabase call
 
-9. **Add Auth Page**
+9. ✅ **Add Auth Page**
    - Start: No `/login` page
    - End: `src/pages/login.tsx` renders login/register forms
    - Test: Page renders, forms mount
 
-10. **Persist Auth State**
+10. ✅ **Persist Auth State**
     - Start: No user state
     - End: User state managed (React Context or Zustand), persists across reloads
     - Test: Auth state persists after reload (unit test)
 
-11. **Protect Routes**
+11. ✅ **Protect Routes**
     - Start: All pages public
     - End: Redirects unauthenticated users from recipe creation/profile pages
     - Test: E2E test for route protection
