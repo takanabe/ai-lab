@@ -1,5 +1,11 @@
 # Chapter1: Designing application
 
+## Relevant PRs
+
+You can find all commits for this chapter in the following PRs.
+
+- https://github.com/takanabe/ai-lab/pull/2 
+
 ## Overview
 
 ## What you'll do
@@ -56,8 +62,3 @@ I’ll be passing this off to an engineering LLM that will be told to complete o
 ```
 
 Change the mode from Plan to Act and save the file.
-
-
-## Relevant PR
-
-- https://github.com/takanabe/ai-lab/pull/2 
