@@ -1,22 +1,24 @@
 # Step-by-Step MVP Build Plan for Recipe Sharing Application
 
+✅ = Completed
+
 This plan is based on the architecture in `.clinerules/01_architecture.md` and the coding policy in `.clinerules/02_coding_policy.md`. Each task is atomic, testable, and focused on a single concern, making it ideal for sequential handoff and testing.
 
 ---
 
 ## 0. Project Initialization
 
-1. **Scaffold Next.js App**
+1. ✅ **Scaffold Next.js App**
    - Start: No project directory
    - End: Clean Next.js app scaffolded, runs with `npm run dev`
    - Test: App loads default page
 
-2. **Install Dependencies**
+2. ✅ **Install Dependencies**
    - Start: Clean Next.js app
    - End: Material UI, Supabase JS, Playwright, Jest, React Testing Library, ESLint, Prettier installed
-   - Test: All packages present, `npm run dev` and `npm test` work
+   - Test: All packages present, `npm run dev`, `npm test`, and `npx playwright test` work
 
-3. **Set Up TypeScript**
+3. ✅ **Set Up TypeScript**
    - Start: JS or default TS config
    - End: TypeScript configured, `tsconfig.json` present, app compiles
    - Test: App builds and runs with TypeScript
