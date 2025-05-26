@@ -27,17 +27,17 @@ This plan is based on the architecture in `.clinerules/01_architecture.md` and t
 
 ## 1. Supabase Integration
 
-4. **Create Supabase Project**
+4. ✅ **Create Supabase Project**
    - Start: No Supabase project
    - End: Supabase project created in dashboard
    - Test: Project visible in Supabase dashboard
 
-5. **Configure Supabase Environment Variables**
+5. ✅ **Configure Supabase Environment Variables**
    - Start: No `.env.local`
    - End: `.env.local` with Supabase URL and anon key
    - Test: Variables loaded, no runtime errors
 
-6. **Add Supabase Client**
+6. ✅ **Add Supabase Client**
    - Start: No client code
    - End: `src/lib/supabaseClient.ts` exports initialized client
    - Test: Import and use client in a test file
