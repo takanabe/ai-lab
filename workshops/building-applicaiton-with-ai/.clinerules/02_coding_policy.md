@@ -9,6 +9,10 @@
     2. Write minimal code to pass the test (Green)  
     3. Refactor code and tests for clarity and maintainability
 
+- **Test Failure Handling (Unit & E2E):**
+  - If there are errors, review code changes, fix issues, and rerun tests.
+  - This fix-and-rerun loop must be executed at least 3 times if there are test failures.
+
 - **Code Reviews:**  
   - All code must be reviewed before merging.
   - Reviewers should check for test coverage, code clarity, and adherence to this policy.
@@ -43,6 +47,9 @@
 
 - **Framework:**  
   - Use [Playwright](https://playwright.dev/) for E2E tests.
+
+- **Test Pass Policy:**  
+  - Always check that `npx playwright test` passes without error.
 
 - **Scope:**  
   - E2E tests should cover critical user flows:
