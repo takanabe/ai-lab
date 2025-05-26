@@ -1,5 +1,10 @@
 import React, { useState } from 'react';
 import { supabase } from '../../../lib/supabaseClient';
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
+import Alert from '@mui/material/Alert';
+import CircularProgress from '@mui/material/CircularProgress';
 
 interface SignUpFormProps {
   onSuccess?: () => void;
@@ -39,37 +44,49 @@ export const SignUpForm: React.FC<SignUpFormProps> = ({ onSuccess }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>Sign Up</h2>
-      <div>
-        <label>
-          Email:
-          <input
-            type="email"
-            value={email}
-            onChange={e => setEmail(e.target.value)}
-            autoComplete="email"
-          />
-        </label>
-      </div>
-      <div>
-        <label>
-          Password:
-          <input
-            type="password"
-            value={password}
-            onChange={e => setPassword(e.target.value)}
-            autoComplete="new-password"
-            minLength={6}
-          />
-        </label>
-      </div>
-      <button type="submit" disabled={loading}>
-        {loading ? 'Signing up...' : 'Sign Up'}
-      </button>
-      {error && <div style={{ color: 'red' }}>{error}</div>}
-      {success && <div style={{ color: 'green' }}>Check your email to confirm your account.</div>}
-    </form>
+    <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+      <TextField
+        margin="normal"
+        fullWidth
+        label="Email"
+        type="email"
+        value={email}
+        onChange={e => setEmail(e.target.value)}
+        autoComplete="email"
+        disabled={loading}
+      />
+      <TextField
+        margin="normal"
+        fullWidth
+        label="Password"
+        type="password"
+        value={password}
+        onChange={e => setPassword(e.target.value)}
+        autoComplete="new-password"
+        disabled={loading}
+        inputProps={{ minLength: 6 }}
+      />
+      <Button
+        type="submit"
+        fullWidth
+        variant="contained"
+        color="primary"
+        disabled={loading}
+        sx={{ mt: 2, mb: 1 }}
+      >
+        {loading ? <CircularProgress size={24} /> : 'Sign Up'}
+      </Button>
+      {error && (
+        <Alert severity="error" sx={{ mt: 2 }}>
+          {error}
+        </Alert>
+      )}
+      {success && (
+        <Alert severity="success" sx={{ mt: 2 }}>
+          Check your email to confirm your account.
+        </Alert>
+      )}
+    </Box>
   );
 };
 

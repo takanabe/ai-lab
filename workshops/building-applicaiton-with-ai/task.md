@@ -56,7 +56,7 @@ This plan is based on the architecture in `.clinerules/01_architecture.md` and t
    - End: `LoginForm` component in `src/features/auth/components/`, calls Supabase login
    - Test: Unit test for form validation and Supabase call
 
-9. **Add Auth Page**
+9. ✅ **Add Auth Page**
    - Start: No `/login` page
    - End: `src/pages/login.tsx` renders login/register forms
    - Test: Page renders, forms mount
