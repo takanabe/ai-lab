@@ -32,7 +32,7 @@ describe('SignUpForm', () => {
     // eslint-disable-next-line no-console
     // @ts-ignore
     // eslint-disable-next-line testing-library/no-debugging-utils
-    screen.debug();
+    // screen.debug();
     expect(
       screen.getByText((content) => content.includes('Email and password are required'))
     ).toBeInTheDocument();
