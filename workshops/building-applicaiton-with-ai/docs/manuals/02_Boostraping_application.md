@@ -1,12 +1,12 @@
-# Bootstrapping Application
+# Chapter2: Bootstrapping Application
 
-## Relevant PR
+## Relevant PRs
 
-You can find all commits from this PR.
+You can find all commits for this chapter in the following PRs.
 
 - https://github.com/takanabe/ai-lab/pull/3
 
-## Bootstrap a new application
+## 2-1 Bootstrap a new application
 
 prompt
 
@@ -34,7 +34,7 @@ Then, VSCode shows the application using the internal browser and show what the 
 ![](images/2_2_access_nestjs_app_from_vscode.png)
 
 
-## Update tasks.md
+## 2-2 Update tasks.md
 
 prompt
 
@@ -43,7 +43,7 @@ Please update tasks.md to clarify which tasks we completed.
 ```
 
 
-## Add technology_stack document
+## 2-3 Add technology_stack document
 
 prompt
 
@@ -65,7 +65,7 @@ Add a new cliene rule called "03_technology_stack" and clarify we want to use
 - Zustand
 ```
 
-## Configure formatter
+## 2-4 Configure formatter
 
 prompt
 
@@ -74,7 +74,7 @@ Configure prittier and use prittier format with `npm run format`
 ```
 
 
-## Install dependencies
+## 2-5 Install dependencies
 
 Because we are following `tasks.md`, the prompt can be very simple.
 
@@ -107,7 +107,7 @@ We must pass tests for Playwright because we have errors.
 
 
 
-## Updading coding policy
+## 2-6 Updating coding policy
 
 prompt
 
@@ -126,7 +126,7 @@ Update tasks.md to complete the task.
 ```
 
 
-## Setup TypeScript
+## 2-7 Setup TypeScript
 
 prompt
 

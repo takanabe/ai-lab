@@ -1,11 +1,17 @@
-# Integrating Supabase
+# Chapter3: Integrating Supabase
+
+## Relevant PRs
+
+You can find all commits from this PR.
+
+- https://github.com/takanabe/ai-lab/pull/4
 
 ## Overview
 
 We SaaS called [Supabase](https://supabase.com/) for DB and Authentication. In this document, we will configure Supabase **Manually** before we use from our app.
 
 
-## Sign-up
+## 3-1 Sign-up
 
 prompt
 
@@ -42,7 +48,7 @@ Configure a new organization with "Free Plan".
 Update tasks.md to complete the task.
 ```
 
-## Configuring env vars
+## 3-2 Configuring env vars
 
 
 ![](images/3_6_Supabase_env_var.png)
@@ -63,7 +69,7 @@ ANON key: YYYYYYYY
 Update tasks.md to complete the task.
 ```
 
-## Configure Supabase client
+## 3-3 Configure Supabase client
 
 prompt
 
