@@ -1,5 +1,12 @@
 # 4 Authentication
 
+## Relevant PRs
+
+You can find all commits for this chapter in the following PRs.
+
+- https://github.com/takanabe/ai-lab/pull/5
+- https://github.com/takanabe/ai-lab/pull/6
+
 ## 4-1 Implement Sign Up Form
 
 prompt
