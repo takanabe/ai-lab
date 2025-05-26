@@ -46,7 +46,7 @@ This plan is based on the architecture in `.clinerules/01_architecture.md` and t
 
 ## 2. Authentication
 
-7. **Implement Sign Up Form**
+7. ✅ **Implement Sign Up Form**
    - Start: No sign up UI
    - End: `SignUpForm` component in `src/features/auth/components/`, calls Supabase sign up
    - Test: Unit test for form validation and Supabase call
