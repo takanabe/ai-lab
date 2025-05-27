@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
@@ -7,21 +7,39 @@ import Alert from '@mui/material/Alert';
 import CircularProgress from '@mui/material/CircularProgress';
 import { createRecipe } from '../services';
 import { useAuthStore } from '../../../store/auth';
+import { Recipe } from '../types';
 
 interface RecipeFormProps {
   onSuccess?: () => void;
+  onSubmit?: (fields: Partial<Recipe>) => Promise<void>;
+  title?: string;
+  description?: string;
+  ingredients?: string[];
+  steps?: string[];
+  image_url?: string;
 }
 
-export const RecipeForm: React.FC<RecipeFormProps> = ({ onSuccess }) => {
+export const RecipeForm: React.FC<RecipeFormProps> = ({
+  onSuccess,
+  onSubmit,
+  title: initialTitle = '',
+  description: initialDescription = '',
+  ingredients: initialIngredients = [''],
+  steps: initialSteps = [''],
+  image_url: initialImageUrl = '',
+}) => {
   const user = useAuthStore((state) => state.user);
-  const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
-  const [ingredients, setIngredients] = useState<string[]>(['']);
-  const [steps, setSteps] = useState<string[]>(['']);
-  const [imageUrl, setImageUrl] = useState('');
+  const [title, setTitle] = useState(initialTitle);
+  const [description, setDescription] = useState(initialDescription);
+  const [ingredients, setIngredients] = useState<string[]>(initialIngredients.length ? initialIngredients : ['']);
+  const [steps, setSteps] = useState<string[]>(initialSteps.length ? initialSteps : ['']);
+  const [imageUrl, setImageUrl] = useState(initialImageUrl);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
+
+  // Only set initial state on mount, not on every prop change
+  // (removes useEffect that resets state on every prop change)
 
   const handleIngredientChange = (idx: number, value: string) => {
     setIngredients((prev) => prev.map((ing, i) => (i === idx ? value : ing)));
@@ -43,7 +61,7 @@ export const RecipeForm: React.FC<RecipeFormProps> = ({ onSuccess }) => {
     setError(null);
     setSuccess(false);
 
-    if (!user) {
+    if (!user && !onSubmit) {
       setError('You must be logged in to create a recipe.');
       return;
     }
@@ -54,23 +72,35 @@ export const RecipeForm: React.FC<RecipeFormProps> = ({ onSuccess }) => {
 
     setLoading(true);
     try {
-      await createRecipe({
-        title,
-        description,
-        ingredients,
-        steps,
-        user_id: user.id,
-        image_url: imageUrl || undefined,
-      });
+      if (onSubmit) {
+        await onSubmit({
+          title,
+          description,
+          ingredients,
+          steps,
+          image_url: imageUrl || undefined,
+        });
+      } else {
+        await createRecipe({
+          title,
+          description,
+          ingredients,
+          steps,
+          user_id: user!.id,
+          image_url: imageUrl || undefined,
+        });
+      }
       setSuccess(true);
-      setTitle('');
-      setDescription('');
-      setIngredients(['']);
-      setSteps(['']);
-      setImageUrl('');
+      if (!onSubmit) {
+        setTitle('');
+        setDescription('');
+        setIngredients(['']);
+        setSteps(['']);
+        setImageUrl('');
+      }
       if (onSuccess) onSuccess();
     } catch (err: any) {
-      setError(err.message || 'Failed to create recipe.');
+      setError(err.message || 'Failed to save recipe.');
     }
     setLoading(false);
   };
@@ -159,7 +189,11 @@ export const RecipeForm: React.FC<RecipeFormProps> = ({ onSuccess }) => {
         disabled={loading}
         sx={{ mt: 2, mb: 1 }}
       >
-        {loading ? <CircularProgress size={24} /> : 'Create Recipe'}
+        {loading
+          ? <CircularProgress size={24} />
+          : onSubmit
+            ? 'Edit Recipe'
+            : 'Create Recipe'}
       </Button>
       {error && (
         <Alert severity="error" sx={{ mt: 2 }}>
@@ -168,7 +202,7 @@ export const RecipeForm: React.FC<RecipeFormProps> = ({ onSuccess }) => {
       )}
       {success && (
         <Alert severity="success" sx={{ mt: 2 }}>
-          Recipe created!
+          {onSubmit ? 'Recipe updated!' : 'Recipe created!'}
         </Alert>
       )}
     </Box>

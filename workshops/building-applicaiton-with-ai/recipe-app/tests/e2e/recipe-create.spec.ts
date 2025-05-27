@@ -33,6 +33,7 @@ test('user can create a new recipe', async ({ page }) => {
   await page.getByRole('textbox', { name: /description/i }).fill('A delicious test recipe');
   await page.getByRole('textbox', { name: /ingredient 1/i }).fill('Flour');
   await page.getByRole('button', { name: /add ingredient/i }).click();
+  await expect(page.getByRole('textbox', { name: /ingredient 2/i })).toBeVisible();
   await page.getByRole('textbox', { name: /ingredient 2/i }).fill('Sugar');
   await page.getByRole('textbox', { name: /step 1/i }).fill('Mix ingredients');
   await page.getByRole('button', { name: /add step/i }).click();

@@ -136,7 +136,7 @@ This plan is based on the architecture in `.clinerules/01_architecture.md` and t
     - End: Can view any recipe by ID
     - Test: E2E test for recipe viewing
 
-23. **Implement Edit Recipe**
+23. ✅ **Implement Edit Recipe**
     - Start: No edit
     - End: Edit form for owner, updates recipe in DB
     - Test: Unit and E2E test for editing
