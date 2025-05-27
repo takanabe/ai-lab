@@ -150,12 +150,12 @@ This plan is based on the architecture in `.clinerules/01_architecture.md` and t
 
 ## 5. User Profiles
 
-25. **Create User Profile Page**
+25. ✅ **Create User Profile Page**
     - Start: No profile page
     - End: `src/pages/profile/[username].tsx` shows user info and their recipes
     - Test: Page renders, correct data shown
 
-26. **List User’s Recipes**
+26. ✅ **List User’s Recipes**
     - Start: Profile page static
     - End: Profile page lists only that user’s recipes
     - Test: Unit/E2E test for filtering
