@@ -90,7 +90,12 @@ const RecipeDetailPage: React.FC = () => {
   const isOwner = user && user.id === recipe.user_id;
 
   return (
-    <Container maxWidth="sm" sx={{ mt: 8 }}>
+    <Container
+      maxWidth="sm"
+      sx={{ mt: 8 }}
+      data-testid="recipe-detail-container"
+      data-user-id={recipe.user_id}
+    >
       <Paper elevation={3} sx={{ p: 4, borderRadius: 2 }}>
         {editing ? (
           <>
