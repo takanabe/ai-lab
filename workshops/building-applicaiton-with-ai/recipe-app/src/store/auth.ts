@@ -5,7 +5,9 @@ import { supabase } from '../lib/supabaseClient';
 
 interface AuthState {
   user: User | null;
+  hydrated: boolean;
   setUser: (user: User | null) => void;
+  setHydrated: (hydrated: boolean) => void;
   signOut: () => Promise<void>;
   refreshUser: () => Promise<void>;
 }
@@ -14,7 +16,9 @@ export const useAuthStore = create<AuthState>()(
   persist(
     (set) => ({
       user: null,
+      hydrated: false,
       setUser: (user) => set({ user }),
+      setHydrated: (hydrated) => set({ hydrated }),
       signOut: async () => {
         await supabase.auth.signOut();
         set({ user: null });

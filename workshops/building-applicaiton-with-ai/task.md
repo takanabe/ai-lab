@@ -73,9 +73,11 @@ This plan is based on the architecture in `.clinerules/01_architecture.md` and t
 
 ---
 
+---
+
 ## 3. Sync DB users (auth.users and public.users)
 
-35. ✅ **Sync auth.users and public.users**
+12. ✅ **Sync auth.users and public.users**
     - Start: No sync between auth.users and public.users
     - End: public.users table and trigger/function for sync created in Supabase
     - Test: New users in auth.users are automatically added to public.users with correct id
@@ -84,62 +86,62 @@ This plan is based on the architecture in `.clinerules/01_architecture.md` and t
 
 ## 4. Recipe CRUD
 
-12. **Define Recipe Types**
+13. ✅ **Define Recipe Types**
     - Start: No types
     - End: `src/features/recipes/types.ts` with Recipe interface
     - Test: TypeScript type-checking
 
-13. **Create Recipe Table in Supabase**
+14. ✅ **Create Recipe Table in Supabase**
     - Start: No table
     - End: `recipes` table with fields (id, title, description, ingredients, steps, user_id, image_url, timestamps)
     - Test: Table visible in Supabase, can insert row
 
-14. **Add Recipe Service Functions**
+15. ✅ **Add Recipe Service Functions**
     - Start: No service code
     - End: `src/features/recipes/services.ts` with CRUD functions (create, read, update, delete)
     - Test: Unit tests for each function (mock Supabase)
 
-15. **Implement Recipe Creation Form**
+16. ✅ **Implement Recipe Creation Form**
     - Start: No form
     - End: `RecipeForm` component in `src/features/recipes/components/`, uses custom hook for state
     - Test: Unit test for form validation
 
-16. **Add New Recipe Page**
+17. ✅ **Add New Recipe Page**
     - Start: No `/recipes/new` page
     - End: `src/pages/recipes/new.tsx` renders form, submits to service
     - Test: Page renders, form submits
 
-17. **Test Recipe Creation**
+18. ✅ **Test Recipe Creation**
     - Start: Form submits, but not verified
     - End: Recipe appears in DB, user redirected to detail page
     - Test: E2E test for recipe creation
 
-18. **Implement Recipe List**
+19. ✅ **Implement Recipe List**
     - Start: No list
     - End: `RecipeList` component fetches and displays recipes
     - Test: Unit test for list rendering
 
-19. **Add Home Page Feed**
+20. ✅ **Add Home Page Feed**
     - Start: No feed
     - End: `src/pages/index.tsx` shows latest recipes using `RecipeList`
     - Test: Page renders, recipes visible
 
-20. **Implement Recipe Detail Page**
+21. ✅ **Implement Recipe Detail Page**
     - Start: No detail page
     - End: `src/pages/recipes/[id].tsx` fetches and displays single recipe
     - Test: Page renders, correct recipe shown
 
-21. **Test Recipe Read**
+22. ✅ **Test Recipe Read**
     - Start: Detail page exists
     - End: Can view any recipe by ID
     - Test: E2E test for recipe viewing
 
-22. **Implement Edit Recipe**
+23. ✅ **Implement Edit Recipe**
     - Start: No edit
     - End: Edit form for owner, updates recipe in DB
     - Test: Unit and E2E test for editing
 
-23. **Implement Delete Recipe**
+24. ✅ **Implement Delete Recipe**
     - Start: No delete
     - End: Owner can delete recipe, removed from DB and UI
     - Test: Unit and E2E test for deletion
@@ -148,12 +150,12 @@ This plan is based on the architecture in `.clinerules/01_architecture.md` and t
 
 ## 5. User Profiles
 
-24. **Create User Profile Page**
+25. **Create User Profile Page**
     - Start: No profile page
     - End: `src/pages/profile/[username].tsx` shows user info and their recipes
     - Test: Page renders, correct data shown
 
-25. **List User’s Recipes**
+26. **List User’s Recipes**
     - Start: Profile page static
     - End: Profile page lists only that user’s recipes
     - Test: Unit/E2E test for filtering
@@ -162,17 +164,17 @@ This plan is based on the architecture in `.clinerules/01_architecture.md` and t
 
 ## 6. UI & Layout
 
-26. **Add Main Layout**
+27. **Add Main Layout**
     - Start: No layout
     - End: `src/layouts/MainLayout.tsx` with header/nav/footer
     - Test: Layout renders on all pages
 
-27. **Integrate Material UI Theme**
+28. **Integrate Material UI Theme**
     - Start: Default theme
     - End: `src/theme/theme.ts` with custom colors, theme provider in `_app.tsx`
     - Test: Theme applied, colors/styles visible
 
-28. **Add Shared Components**
+29. **Add Shared Components**
     - Start: None
     - End: Button, Card, Navbar, etc. in `src/components/`
     - Test: Unit test for each component
@@ -181,17 +183,17 @@ This plan is based on the architecture in `.clinerules/01_architecture.md` and t
 
 ## 7. Image Upload (Optional MVP)
 
-29. **Enable Supabase Storage**
+30. **Enable Supabase Storage**
     - Start: No storage
     - End: Supabase storage bucket for images
     - Test: Can upload image via dashboard
 
-30. **Add Image Upload to Recipe Form**
+31. **Add Image Upload to Recipe Form**
     - Start: No upload
     - End: Users can upload image, URL saved to recipe
     - Test: Unit/E2E test for upload
 
-31. **Display Recipe Images**
+32. **Display Recipe Images**
     - Start: No images
     - End: Recipe cards and detail pages show images
     - Test: Images render in UI
@@ -200,17 +202,17 @@ This plan is based on the architecture in `.clinerules/01_architecture.md` and t
 
 ## 8. Testing & Polish
 
-32. **Manual Test All Flows**
+33. ✅ **Manual Test All Flows**
     - Start: Features implemented
     - End: All flows (auth, CRUD, navigation) tested
     - Test: Manual/E2E test pass
 
-33. **Add Error Handling & Loading States**
+34. **Add Error Handling & Loading States**
     - Start: None
     - End: All forms and pages handle errors and loading
     - Test: Unit/E2E test for error/loading
 
-34. **Polish UI**
+35. **Polish UI**
     - Start: Basic UI
     - End: Consistent, responsive, accessible design
     - Test: Visual/manual review

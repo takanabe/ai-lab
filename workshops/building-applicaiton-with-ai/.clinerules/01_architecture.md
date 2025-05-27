@@ -42,6 +42,8 @@ This architecture is designed for a modern web application using **Next.js** (Re
 │   │   └── theme.ts
 │   └── types/                 # Global TypeScript types
 │       └── index.ts
+├── tests/
+│   └── e2e/                   # End-to-end Playwright tests
 ├── .env.local                 # Environment variables (Supabase keys, etc.)
 ├── package.json
 ├── tsconfig.json
