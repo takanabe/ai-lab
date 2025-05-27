@@ -164,17 +164,17 @@ This plan is based on the architecture in `.clinerules/01_architecture.md` and t
 
 ## 6. UI & Layout
 
-27. **Add Main Layout**
+27. ✅ **Add Main Layout**
     - Start: No layout
     - End: `src/layouts/MainLayout.tsx` with header/nav/footer
     - Test: Layout renders on all pages
 
-28. **Integrate Material UI Theme**
+28. ✅ **Integrate Material UI Theme**
     - Start: Default theme
     - End: `src/theme/theme.ts` with custom colors, theme provider in `_app.tsx`
     - Test: Theme applied, colors/styles visible
 
-29. **Add Shared Components**
+29. ✅ **Add Shared Components**
     - Start: None
     - End: Button, Card, Navbar, etc. in `src/components/`
     - Test: Unit test for each component
