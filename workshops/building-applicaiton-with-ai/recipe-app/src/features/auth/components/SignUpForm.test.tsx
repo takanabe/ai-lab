@@ -2,17 +2,24 @@ import React from 'react';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { SignUpForm } from './SignUpForm';
 
-// Mock supabase client
-const mockUpdate = jest.fn().mockReturnValue({ eq: jest.fn() });
+// Improved mock for supabase client
+const mockUpdate = jest.fn();
+const mockEq = jest.fn();
 jest.mock('../../../lib/supabaseClient', () => ({
   supabase: {
     auth: {
       signUp: jest.fn(),
     },
     from: () => ({
-      update: () => ({
-        eq: mockUpdate,
-      }),
+      update: (updateObj: any) => {
+        mockUpdate(updateObj);
+        return {
+          eq: (idKey: string, idValue: string) => {
+            mockEq(idKey, idValue);
+            return { data: {}, error: null };
+          },
+        };
+      },
     }),
   },
 }));
@@ -65,6 +72,7 @@ describe('SignUpForm', () => {
     );
     expect(mockSignUp).toHaveBeenCalledWith({ email: 'test@example.com', password: '123456' });
     expect(mockUpdate).toHaveBeenCalledWith({ first_name: 'John', last_name: 'Doe' });
+    expect(mockEq).toHaveBeenCalledWith('id', 'user-123');
   });
 
   it('shows error message if supabase returns error', async () => {

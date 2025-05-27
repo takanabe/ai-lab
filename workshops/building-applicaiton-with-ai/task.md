@@ -86,32 +86,32 @@ This plan is based on the architecture in `.clinerules/01_architecture.md` and t
 
 ## 4. Recipe CRUD
 
-13. **Define Recipe Types**
+13. ✅ **Define Recipe Types**
     - Start: No types
     - End: `src/features/recipes/types.ts` with Recipe interface
     - Test: TypeScript type-checking
 
-14. **Create Recipe Table in Supabase**
+14. ✅ **Create Recipe Table in Supabase**
     - Start: No table
     - End: `recipes` table with fields (id, title, description, ingredients, steps, user_id, image_url, timestamps)
     - Test: Table visible in Supabase, can insert row
 
-15. **Add Recipe Service Functions**
+15. ✅ **Add Recipe Service Functions**
     - Start: No service code
     - End: `src/features/recipes/services.ts` with CRUD functions (create, read, update, delete)
     - Test: Unit tests for each function (mock Supabase)
 
-16. **Implement Recipe Creation Form**
+16. ✅ **Implement Recipe Creation Form**
     - Start: No form
     - End: `RecipeForm` component in `src/features/recipes/components/`, uses custom hook for state
     - Test: Unit test for form validation
 
-17. **Add New Recipe Page**
+17. ✅ **Add New Recipe Page**
     - Start: No `/recipes/new` page
     - End: `src/pages/recipes/new.tsx` renders form, submits to service
     - Test: Page renders, form submits
 
-18. **Test Recipe Creation**
+18. ✅ **Test Recipe Creation**
     - Start: Form submits, but not verified
     - End: Recipe appears in DB, user redirected to detail page
     - Test: E2E test for recipe creation

@@ -4,13 +4,14 @@ import { useAuthStore } from '../../../store/auth';
 
 export function useRequireAuth() {
   const user = useAuthStore((state) => state.user);
+  const hydrated = useAuthStore((state) => state.hydrated);
   const router = useRouter();
 
   useEffect(() => {
-    if (user === null) {
+    if (hydrated && user === null) {
       router.replace('/login');
     }
-  }, [user, router]);
+  }, [user, hydrated, router]);
 
   return user;
 }
