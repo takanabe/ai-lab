@@ -141,7 +141,7 @@ This plan is based on the architecture in `.clinerules/01_architecture.md` and t
     - End: Edit form for owner, updates recipe in DB
     - Test: Unit and E2E test for editing
 
-24. **Implement Delete Recipe**
+24. ✅ **Implement Delete Recipe**
     - Start: No delete
     - End: Owner can delete recipe, removed from DB and UI
     - Test: Unit and E2E test for deletion
