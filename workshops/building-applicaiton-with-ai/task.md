@@ -116,22 +116,22 @@ This plan is based on the architecture in `.clinerules/01_architecture.md` and t
     - End: Recipe appears in DB, user redirected to detail page
     - Test: E2E test for recipe creation
 
-19. **Implement Recipe List**
+19. ✅ **Implement Recipe List**
     - Start: No list
     - End: `RecipeList` component fetches and displays recipes
     - Test: Unit test for list rendering
 
-20. **Add Home Page Feed**
+20. ✅ **Add Home Page Feed**
     - Start: No feed
     - End: `src/pages/index.tsx` shows latest recipes using `RecipeList`
     - Test: Page renders, recipes visible
 
-21. **Implement Recipe Detail Page**
+21. ✅ **Implement Recipe Detail Page**
     - Start: No detail page
     - End: `src/pages/recipes/[id].tsx` fetches and displays single recipe
     - Test: Page renders, correct recipe shown
 
-22. **Test Recipe Read**
+22. ✅ **Test Recipe Read**
     - Start: Detail page exists
     - End: Can view any recipe by ID
     - Test: E2E test for recipe viewing
@@ -202,7 +202,7 @@ This plan is based on the architecture in `.clinerules/01_architecture.md` and t
 
 ## 8. Testing & Polish
 
-33. **Manual Test All Flows**
+33. ✅ **Manual Test All Flows**
     - Start: Features implemented
     - End: All flows (auth, CRUD, navigation) tested
     - Test: Manual/E2E test pass
