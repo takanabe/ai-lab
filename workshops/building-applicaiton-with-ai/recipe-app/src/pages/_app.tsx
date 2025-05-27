@@ -2,6 +2,10 @@ import { useEffect } from 'react';
 import type { AppProps } from 'next/app';
 import { supabase } from '../lib/supabaseClient';
 import { useAuthStore } from '../store/auth';
+import MainLayout from '../layouts/MainLayout';
+import { ThemeProvider } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
+import theme from '../theme/theme';
 
 function MyApp({ Component, pageProps }: AppProps) {
   const setUser = useAuthStore((state) => state.setUser);
@@ -34,7 +38,14 @@ function MyApp({ Component, pageProps }: AppProps) {
     };
   }, [setUser, setHydrated]);
 
-  return <Component {...pageProps} />;
+  return (
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <MainLayout>
+        <Component {...pageProps} />
+      </MainLayout>
+    </ThemeProvider>
+  );
 }
 
 export default MyApp;
