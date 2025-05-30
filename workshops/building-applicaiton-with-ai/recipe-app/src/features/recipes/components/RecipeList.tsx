@@ -9,6 +9,7 @@ import Typography from '@mui/material/Typography';
 import CircularProgress from '@mui/material/CircularProgress';
 import Alert from '@mui/material/Alert';
 import Link from 'next/link';
+import Grid from '@mui/material/Grid';
 
 interface RecipeListProps {
   userId?: string;
@@ -52,33 +53,62 @@ const RecipeList: React.FC<RecipeListProps> = ({ userId }) => {
   }
 
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, mt: 2 }}>
+    <Grid container spacing={3} sx={{ mt: 2 }} alignItems="stretch">
       {recipes.map((recipe) => (
-        <Link key={recipe.id} href={`/recipes/${recipe.id}`} passHref legacyBehavior>
-          <a style={{ textDecoration: 'none', color: 'inherit' }}>
-            <Card sx={{ display: 'flex', alignItems: 'center', cursor: 'pointer' }}>
-              {recipe.image_url && (
-                <CardMedia
-                  component="img"
-                  sx={{ width: 120, height: 120, objectFit: 'cover' }}
-                  image={recipe.image_url}
-                  alt={recipe.title}
-                />
-              )}
-              <CardContent>
-                <Typography variant="h6">{recipe.title}</Typography>
-                <Typography variant="body2" color="text.secondary" sx={{ mb: 1 }}>
-                  {recipe.description}
-                </Typography>
-                <Typography variant="caption" color="text.secondary">
-                  {new Date(recipe.created_at).toLocaleString()}
-                </Typography>
-              </CardContent>
-            </Card>
-          </a>
-        </Link>
+        // @ts-ignore
+        <Grid item xs={4} key={recipe.id} sx={{ display: 'flex' }}>
+          <Link href={`/recipes/${recipe.id}`} passHref legacyBehavior>
+            <a style={{ textDecoration: 'none', color: 'inherit', width: '100%', display: 'flex' }}>
+              <Card
+                sx={{
+                  width: '100%',
+                  minHeight: 320,
+                  height: '100%',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  cursor: 'pointer',
+                }}
+              >
+                {recipe.image_url ? (
+                  <CardMedia
+                    component="img"
+                    sx={{ width: '100%', height: 120, objectFit: 'cover' }}
+                    image={recipe.image_url}
+                    alt={recipe.title}
+                  />
+                ) : (
+                  <Box sx={{ width: '100%', height: 120, bgcolor: 'grey.200' }} />
+                )}
+                <CardContent
+                  sx={{
+                    flexGrow: 1,
+                    minHeight: 120,
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'flex-start',
+                    overflow: 'hidden',
+                  }}
+                >
+                  <Typography variant="h6" gutterBottom noWrap>
+                    {recipe.title}
+                  </Typography>
+                  <Typography
+                    variant="body2"
+                    color="text.secondary"
+                    sx={{ mb: 1, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}
+                  >
+                    {recipe.description}
+                  </Typography>
+                  <Typography variant="caption" color="text.secondary">
+                    {new Date(recipe.created_at).toLocaleString()}
+                  </Typography>
+                </CardContent>
+              </Card>
+            </a>
+          </Link>
+        </Grid>
       ))}
-    </Box>
+    </Grid>
   );
 };
 
