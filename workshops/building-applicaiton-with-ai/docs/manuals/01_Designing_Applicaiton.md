@@ -1,5 +1,7 @@
 # Chapter1: Designing application
 
+If you haven't completed [Prepartion](../../01_Preparation.md), please completes the preparation to install all tools we need in this chapter.
+
 ## Relevant PRs
 
 You can find all commits for this chapter in the following PRs.
@@ -29,7 +31,49 @@ All of this is made possible by collaborating with an AI agent that understands 
 - You will create a project structure, coding policy, and tasks as markdown files.
 - You will share the markdown files as our application contexts with AI Agent.
 
-## 1-1: Designing project structure
+
+## 1-1: Initializing project
+
+Please create a new directory and initialize git before you start working AI-driven development.
+
+Following commands are examples to prepare the project directory.
+
+```bash
+cd [SOMEWHERE_YOU_CAN_CREATE_YOUR_DIRECTORY]
+mkdir recipe-app && cd recipe-app
+git init
+echo "Recipe App" > README.md
+git add . && git commit -m "initial commit"
+```
+
+Let's open VSCode with the command below at the repository root
+
+```
+code .
+```
+
+If you haven't configured `code` command yet, please check [Preparation](../../01_Preparation.md) document and setup the command to use from you terminal.
+
+## 1-2: Introducing Cline
+
+
+Explaining the full details of Cline takes time. This workshop avoids deep-diving into Cline's documentation and instead focuses on giving you the essential knowledge needed to guide an AI agent effectively using Cline. If you'd like to learn more about Cline in detail after the workshop, visit https://docs.cline.bot.
+
+Anyways, Let's configure Cline! First of all, please open the Cline window using VSCode Command Palette. You can access the VSCode Command Palette in a number of ways. Shift + Command + P (Mac) / Ctrl + Shift + P (Windows/Linux).
+
+![](images/1_1_Open_clien.png)
+
+Next, open setting of Cline.
+
+![](images/1_2_cline_setting.png)
+
+The only configuration we need is choosing API provider, model, and passing API key. This time, we will use OpenAI as API Provider and it's model `gpt-4.1` for the LLM. Also don't forget to put API key you have.
+
+![](images/1_3_Cline_API_key.png)
+
+That's it! From now, your VSCode can work with AI Agent.
+
+## 1-3: Designing project structure
 
 Run the following prompt with "Plan" mode.
 
@@ -50,7 +94,7 @@ Run the prompt below with "Act" mode.
 save this document as a markdown as .clinerules/01_architecture.md
 ```
 
-## 1-2: Creating coding policy
+## 1-4: Creating coding policy
 
 Run the following prompt with "Plan" mode.
 
@@ -61,7 +105,7 @@ Add .clinerules/02_coding_policy.md for code practice in this project. I'd like 
 Change the mode from Plan to Act and save the file.
 
 
-## 1-3: Creating a task list
+## 1-5: Creating a task list
 
 Run the following prompt with "Plan" mode.
 
