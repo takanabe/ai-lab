@@ -6,15 +6,25 @@ You can find all commits for this chapter in the following PRs.
 
 - https://github.com/takanabe/ai-lab/pull/5
 
+## Overview
+
+In this chapter, you'll implement user authentication by building sign-up and login forms and integrating them with Supabase. This chapter also includes how to persist the authentication state and protect routes that require login. You'll encounter real-world challenges such as failing tests and design mismatches, which give you opportunities to practice guiding an AI agent through iterative debugging, testing, and UI refinement.
+
+One of the key takeaways here is that working with AI agents like Cline isn't just about generating code—it's about **collaborating**. The agent uses your context, runs loops to resolve failures, and follows coding conventions defined in `.clinerules`, just like a human teammate would.
+
+
 ## 4-1 Implement Sign Up Form
 
-prompt
+To start the authentication feature, run the following prompt:
 
 ```
 Move on to the next task.
 ```
 
-While adding a new code, there are test failures. Thanks to [.clinerules/02_coding_policy.md](../../.clinerules/02_coding_policy.md), even if there are failures to the new code, Cline try to find the root cause and fix the code automatically.
+In Taka' case, while he was adding a new code, there were test failures. Thanks to , even if there are failures to the new code, Cline try to find the root cause and fix the code automatically.
+
+This triggers Cline to begin implementing the sign-up form. During this step, Cline writes the form and test code. However, some test failures are encountered due to misconfigurations or JSX transform issues. Fortunately, because we defined a clear policy in [.clinerules/02_coding_policy.md](../../.clinerules/02_coding_policy.md), the AI agent automatically attempts to debug and fix issues in a loop until tests pass.
+
 
 
 <details>
@@ -599,6 +609,7 @@ Ran all test suites.
 ```
 </details>
 
+After resolving the test issues, update your task list by running:
 
 prompt
 
@@ -608,13 +619,15 @@ Update tasks.md to complete the task.
 
 ## 4-2 Implement Login Form
 
+Next, instruct Cline to continue with the login form:
+
 prompt
 
 ```
 Move on to the next task.
 ```
 
-This smoothly implements the LoginForm.
+Cline will add the login form component without issues. Once complete, update your task list:
 
 prompt
 
@@ -624,12 +637,15 @@ Update tasks.md to complete the task.
 
 ## 4-3 Add Auth Page and Apply MUI
 
+Continue with the following prompt:
+
 prompt
 
 ```
 Move on to the next task.
 ```
 
+Once the login page is created, instruct Cline to add tests:
 
 prompt
 
@@ -637,12 +653,15 @@ prompt
 Write tests and confirm if login page works.
 ```
 
-prompt
+To improve UX, eliminate redundant text on the page:
 
+prompt
 
 ```
 Both page and Login Form component has "Login" and we display two Login texts. Please elimiate the redundancy. So as SignUpForm.
 ```
+
+Also, ensure the UI follows your technology guidelines:
 
 prompt
 
@@ -650,9 +669,9 @@ prompt
 Follow @/.clinerules/03_technology_stack.md . You must apply Material UI while we are implementing Next.js pages and React components.
 ```
 
-
 ![](images/4_1_LoginForm.png)
 
+Once the UI and tests are confirmed, mark the task as complete:
 
 prompt
 
@@ -663,11 +682,16 @@ Update tasks.md to complete the task.
 
 ## 4-4 Persist Auth State
 
+Continue implementation with:
+
 prompt
 
 ```
 Move on to the next task.
 ```
+
+Ensure session persistence is handled through Supabases auth listener. Once implemented, record completion:
+
 
 prompt
 
@@ -677,15 +701,19 @@ Update tasks.md to complete the task.
 
 ## 4-5 Protect Routes
 
+Move to the final step in authentication:
+
 prompt
 
 ```
 Move on to the next task.
 ```
 
+During this phase, Taka faced a challenge regarding redundant authentication logic in each page. Cline asks for clarification:
 
 ![](images/4_2_Question_about_implementation.png)
 
+Answer with this prompt to guide toward a global solution:
 
 prompt
 
@@ -703,8 +731,16 @@ I don't want to write
 For all pages we need to authenticate. Are there any ideas to manage this in a single place?
 ```
 
+After implementing a centralized auth solution (e.g., a wrapper component or route-level guard), finish the task by running:
+
 prompt
 
 ```
 Update tasks.md to complete the task.
 ```
+
+# Conclusion
+
+In this chapter, you completed end-to-end authentication for your application, covering sign-up, login, state persistence, and route protection. You encountered and resolved real development challenges—test failures, outdated JSX warnings, UI redundancy, and architectural questions.
+
+By applying AI agent collaboration with structured rules, you were able to recover from failures, enforce consistency, and make incremental progress without getting stuck. This process is similar to working with a junior teammate guided by clearly defined standards.
