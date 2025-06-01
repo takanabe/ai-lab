@@ -151,16 +151,16 @@ Each task should:
 I'll be passing this off to an engineering LLM that will be told to complete one task at a time, allowing me to test in between. 
 ```
 
-Then, ask Clien to save the task list as `tasks.md`.
+Then, ask Clien to save the task list as `task.md`.
 
 ```
-Save the task list as tasks.md at the repository root.
+Save the task list as task.md at the repository root.
 ```
 
 Change the mode from Plan to Act and save the file.
 
 <details>
-<summary>example tasks.md</summary>
+<summary>example task.md</summary>
 
 ```md
 # MVP Step-by-Step Task List for Recipe Sharing App
