@@ -8,8 +8,6 @@ This is not the end—it's your starting point.
 
 Now it’s time to move **beyond the foundations**. The best way to grow is to **build something new, challenge the agent, and learn through iteration**. Below are some practical next steps and project ideas you can pursue to deepen your skills.
 
----
-
 ## What You Can Do Next
 
 Here are some examples of where to take your learning:
@@ -39,7 +37,6 @@ Here are some examples of where to take your learning:
 - Explore features like **Memory Bank**, which helps support large-scale, multi-module projects with persistent memory
 - Try Cline in team settings by sharing `.clinerules` across repos and enforcing consistent structure at scale
 
----
 
 ## Closing Thoughts
 
