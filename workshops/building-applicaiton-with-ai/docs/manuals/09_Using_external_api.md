@@ -98,6 +98,11 @@ You can test the integration by searching for a recipe (e.g., "Curry"), viewing 
 
 ![](images/9_2_receipe_create_with_search2.png)
 
+To make all tasks we've completed, run the following prompt:
+
+```
+Mark completed from task 36 to 42
+```
 
 ## Conclusion
 

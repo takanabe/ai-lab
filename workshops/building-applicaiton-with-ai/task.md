@@ -209,37 +209,37 @@ This plan is based on the architecture in `.clinerules/01_architecture.md` and t
     
 ## 9. Use TheMealDB 
 
-36. **Add TheMealDB Search UI**
+36. ✅ **Add TheMealDB Search UI**
     - Start: No search UI for external recipes
     - End: UI component (e.g., `TheMealDBSearch`) in `src/features/recipes/components/` for searching TheMealDB by keyword
     - Test: Unit test for search input and API call trigger
 
-37. **Implement TheMealDB API Service**
+37. ✅ **Implement TheMealDB API Service**
     - Start: No service for TheMealDB
     - End: Service module in `src/features/recipes/services.ts` (or a new file) to fetch/search recipes from TheMealDB API
     - Test: Unit test for API call and response mapping (mock fetch)
 
-38. **Display TheMealDB Search Results**
+38. ✅ **Display TheMealDB Search Results**
     - Start: No results display
     - End: Search results rendered in the UI, showing recipe info from TheMealDB
     - Test: Unit test for result rendering
 
-39. **Enable Import of TheMealDB Recipe**
+39. ✅ **Enable Import of TheMealDB Recipe**
     - Start: No import functionality
     - End: User can select a recipe from results and import it as a new recipe (pre-filling the RecipeForm)
     - Test: Unit/E2E test for import flow
 
-40. **Map TheMealDB Data to App Recipe Type**
+40. ✅ **Map TheMealDB Data to App Recipe Type**
     - Start: No mapping logic
     - End: Mapping function to convert TheMealDB recipe data to app's Recipe type (in `src/features/recipes/types.ts` or a helper)
     - Test: Unit test for mapping function
 
-41. **Create Recipe from Imported Data**
+41. ✅ **Create Recipe from Imported Data**
     - Start: No creation from import
     - End: Imported recipe is saved to Supabase and appears in the app as a new recipe
     - Test: E2E test for full import-to-create flow
 
-42. **Test and Polish TheMealDB Integration**
+42. ✅ **Test and Polish TheMealDB Integration**
     - Start: Integration implemented
     - End: All flows (search, import, create) tested and UI/UX polished
     - Test: Unit/E2E test pass, visual/manual review
