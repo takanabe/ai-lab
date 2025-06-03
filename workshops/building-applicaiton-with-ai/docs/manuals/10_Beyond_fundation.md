@@ -37,6 +37,10 @@ Here are some examples of where to take your learning:
 - Explore features like **Memory Bank**, which helps support large-scale, multi-module projects with persistent memory
 - Try Cline in team settings by sharing `.clinerules` across repos and enforcing consistent structure at scale
 
+### Deploying secure environment
+
+- Use dev container (VSCode) to segregate your local environment and AI accessible environment for more secure development and use the environment for AI-driven development.
+
 
 ## Closing Thoughts
 
