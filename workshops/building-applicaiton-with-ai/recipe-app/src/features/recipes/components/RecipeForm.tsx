@@ -38,8 +38,14 @@ export const RecipeForm: React.FC<RecipeFormProps> = ({
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
 
-  // Only set initial state on mount, not on every prop change
-  // (removes useEffect that resets state on every prop change)
+  // Update form state when initial values change (e.g., after importing)
+  useEffect(() => {
+    setTitle(initialTitle);
+    setDescription(initialDescription);
+    setIngredients(initialIngredients.length ? initialIngredients : ['']);
+    setSteps(initialSteps.length ? initialSteps : ['']);
+    setImageUrl(initialImageUrl);
+  }, [initialTitle, initialDescription, initialIngredients, initialSteps, initialImageUrl]);
 
   const handleIngredientChange = (idx: number, value: string) => {
     setIngredients((prev) => prev.map((ing, i) => (i === idx ? value : ing)));

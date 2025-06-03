@@ -1,3 +1,4 @@
+import React from 'react';
 import { useEffect } from 'react';
 import type { AppProps } from 'next/app';
 import { supabase } from '../lib/supabaseClient';
